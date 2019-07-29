@@ -3,32 +3,32 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "stock-market-demo": {
+    "git-issues-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/stock-market-demo",
-      "sourceRoot": "projects/stock-market-demo/src",
-      "prefix": "smd",
+      "root": "projects/git-issues-demo",
+      "sourceRoot": "projects/git-issues-demo/src",
+      "prefix": "gid",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/stock-market-demo",
-            "index": "projects/stock-market-demo/src/index.html",
-            "main": "projects/stock-market-demo/src/main.ts",
-            "polyfills": "projects/stock-market-demo/src/polyfills.ts",
-            "tsConfig": "projects/stock-market-demo/tsconfig.app.json",
+            "outputPath": "dist/git-issues-demo",
+            "index": "projects/git-issues-demo/src/index.html",
+            "main": "projects/git-issues-demo/src/main.ts",
+            "polyfills": "projects/git-issues-demo/src/polyfills.ts",
+            "tsConfig": "projects/git-issues-demo/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "projects/stock-market-demo/src/favicon.ico",
-              "projects/stock-market-demo/src/assets"
+              "projects/git-issues-demo/src/favicon.ico",
+              "projects/git-issues-demo/src/assets"
             ],
             "styles": [
-              "projects/stock-market-demo/src/styles.scss"
+              "projects/git-issues-demo/src/styles.scss"
             ],
             "scripts": []
           },
@@ -36,8 +36,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/stock-market-demo/src/environments/environment.ts",
-                  "with": "projects/stock-market-demo/src/environments/environment.prod.ts"
+                  "replace": "projects/git-issues-demo/src/environments/environment.ts",
+                  "with": "projects/git-issues-demo/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -62,33 +62,33 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "stock-market-demo:build"
+            "browserTarget": "git-issues-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "stock-market-demo:build:production"
+              "browserTarget": "git-issues-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "stock-market-demo:build"
+            "browserTarget": "git-issues-demo:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/stock-market-demo/src/test.ts",
-            "polyfills": "projects/stock-market-demo/src/polyfills.ts",
-            "tsConfig": "projects/stock-market-demo/tsconfig.spec.json",
-            "karmaConfig": "projects/stock-market-demo/karma.conf.js",
+            "main": "projects/git-issues-demo/src/test.ts",
+            "polyfills": "projects/git-issues-demo/src/polyfills.ts",
+            "tsConfig": "projects/git-issues-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/git-issues-demo/karma.conf.js",
             "assets": [
-              "projects/stock-market-demo/src/favicon.ico",
-              "projects/stock-market-demo/src/assets"
+              "projects/git-issues-demo/src/favicon.ico",
+              "projects/git-issues-demo/src/assets"
             ],
             "styles": [
-              "projects/stock-market-demo/src/styles.scss"
+              "projects/git-issues-demo/src/styles.scss"
             ],
             "scripts": []
           }
@@ -97,9 +97,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/stock-market-demo/tsconfig.app.json",
-              "projects/stock-market-demo/tsconfig.spec.json",
-              "projects/stock-market-demo/e2e/tsconfig.json"
+              "projects/git-issues-demo/tsconfig.app.json",
+              "projects/git-issues-demo/tsconfig.spec.json",
+              "projects/git-issues-demo/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -109,12 +109,12 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/stock-market-demo/e2e/protractor.conf.js",
-            "devServerTarget": "stock-market-demo:serve"
+            "protractorConfig": "projects/git-issues-demo/e2e/protractor.conf.js",
+            "devServerTarget": "git-issues-demo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "stock-market-demo:serve:production"
+              "devServerTarget": "git-issues-demo:serve:production"
             }
           }
         }
@@ -122,5 +122,5 @@
     }
     
   },
-  "defaultProject": "stock-market-demo"
+  "defaultProject": "git-issues-demo"
 }

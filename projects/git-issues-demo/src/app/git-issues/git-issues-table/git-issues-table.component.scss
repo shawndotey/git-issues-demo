@@ -1,0 +1,23 @@
+@import "./scss/git-issues-table.mixins.scss";
+
+.git-issues-table-container{
+  @include issues-table-container();
+}
+
+@media screen and (max-width: 700px) {
+ .mat-table {
+  
+   @include issues-table-condensed();
+   .mat-row {
+    @include issues-table-row-condensed();
+   }
+   .mat-cell{
+    @include issues-table-cell-condensed();
+   }
+   
+ }
+
+ .mat-header-row{
+  @include issues-table-header-row-condensed();
+ }
+}

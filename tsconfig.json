@@ -19,9 +19,10 @@
       "dom"
     ],
     "paths":{
-      "@smd/core/*":["projects/stock-market-demo/src/app/core/*"],
-      "@smd/symbol-widget/*":["projects/stock-market-demo/src/app/symbol-overview-widget/*"],
-      "@smd/shared/*":["projects/stock-market-demo/src/app/shared/*"]
+      "@gid/core/*":["projects/git-issues-demo/src/app/core/*"],
+      "@gid/src/*":["projects/git-issues-demo/src/*"],
+      "@gid/symbol-widget/*":["projects/git-issues-demo/src/app/symbol-overview-widget/*"],
+      "@gid/shared/*":["projects/git-issues-demo/src/app/shared/*"]
     }
   }
 }

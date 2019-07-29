@@ -16,7 +16,7 @@ At the bottom, there is a ngrx store based config that will restrict view of min
 
 ## Development server
 
-Run `ng serve --project=stock-market-demo` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve --project=git-issues-demo` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Further help
 

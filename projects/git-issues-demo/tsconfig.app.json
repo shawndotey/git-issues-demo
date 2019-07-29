@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/app",
+    "types": [],
+    "paths":{
+      "@gid/core/*":["projects/git-issues-demo/src/app/core/*"],
+      "@gid/src/*":["projects/git-issues-demo/src/*"],
+      "@gid/symbol-widget/*":["projects/git-issues-demo/src/app/symbol-overview-widget/*"],
+      "@gid/shared/*":["projects/git-issues-demo/src/app/shared/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "src/test.ts",
+    "src/**/*.spec.ts"
+  ]
+}
