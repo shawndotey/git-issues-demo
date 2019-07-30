@@ -25,7 +25,7 @@ export class GitIssuesOrdersTableComponent implements OnInit , AfterViewInit, On
   private _onDestroy = new Subject<void>();
   today: number = Date.now();
 
-  displayedColumns = ['id', 'userName', 'title', 'body', 'assigneeUserName'];
+  displayedColumns = ['id', 'userName', 'issue', 'assigneeUserName'];
   // displayedColumns = ['id',  'title', 'body'];
   dataSource: MatTableDataSource<GitIssuesResults>;
 

@@ -4,7 +4,7 @@
 
     <!-- ID Column -->
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> CREATED </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef > CREATED </mat-header-cell>
       <mat-cell *matCellDef="let row">
         <div class="condensed-label">CREATED :</div>
         <div class="cell-content">
@@ -15,11 +15,11 @@
 
     <!-- GitIssues Column -->
     <ng-container matColumnDef="userName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> USER </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef > USER </mat-header-cell>
       <mat-cell *matCellDef="let row">
         <div class="condensed-label">USER :</div>
         <div class="cell-content">
-          <div class="user-container">
+          <div class="user-container" *ngIf="row.user.userName">
             <div class="avatar-image">
               <img src="{{row.user.avatarUrl}}" />
             </div>
@@ -33,30 +33,25 @@
 
     <!-- Progress Column -->
 
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> TITLE </mat-header-cell>
+    <ng-container matColumnDef="issue">
+      <mat-header-cell *matHeaderCellDef > ISSUE </mat-header-cell>
       <mat-cell *matCellDef="let row"> 
-        <div class="condensed-label">TITLE :</div>
-        <div class="cell-content">{{row.title}} </div>
+        <div class="condensed-label">ISSUE :</div>
+        <div class="cell-content issue">
+            <div class="title"> {{row.title}} </div>
+            <div class="body"> {{row.body}} </div>
+        </div>
         
       </mat-cell>
     </ng-container>
-
-    <ng-container matColumnDef="body">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> BODY </mat-header-cell>
-      <mat-cell *matCellDef="let row" data-label="BODY :"> 
-        <div class="condensed-label">BODY :</div>
-        <div class="cell-content">{{row.body}}</div>
-      </mat-cell>
-    </ng-container>
-
+    
     <ng-container matColumnDef="assigneeUserName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ASSIGNED </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef > ASSIGNED </mat-header-cell>
       
       <mat-cell *matCellDef="let row">
         <div class="condensed-label">ASSIGNED :</div>
         <div class="cell-content">
-          <div class="user-container">
+          <div class="user-container" *ngIf="row.assigneeUser.userName">
             <div class="avatar-image">
               <div class="avatar-image">
                 <img src="{{row.assigneeUser.avatarUrl}}" />
