@@ -2,6 +2,8 @@
 
 .git-issues-table-container{
   @include issues-table-container();
+  @include issues-table-columns();
+  @include issues-table-cell-content();
 }
 
 @media screen and (max-width: 700px) {

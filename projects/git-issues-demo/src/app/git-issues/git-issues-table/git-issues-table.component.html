@@ -3,7 +3,7 @@
   <mat-table [dataSource]="dataSource" matSort *ngIf="!(searching$ | async)">
 
     <!-- ID Column -->
-    <ng-container matColumnDef="id">
+    <ng-container matColumnDef="created">
       <mat-header-cell *matHeaderCellDef > CREATED </mat-header-cell>
       <mat-cell *matCellDef="let row">
         <div class="condensed-label">CREATED :</div>
@@ -14,7 +14,7 @@
     </ng-container>
 
     <!-- GitIssues Column -->
-    <ng-container matColumnDef="userName">
+    <ng-container matColumnDef="user">
       <mat-header-cell *matHeaderCellDef > USER </mat-header-cell>
       <mat-cell *matCellDef="let row">
         <div class="condensed-label">USER :</div>
@@ -45,7 +45,7 @@
       </mat-cell>
     </ng-container>
     
-    <ng-container matColumnDef="assigneeUserName">
+    <ng-container matColumnDef="assignee">
       <mat-header-cell *matHeaderCellDef > ASSIGNED </mat-header-cell>
       
       <mat-cell *matCellDef="let row">

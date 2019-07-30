@@ -4,16 +4,29 @@ import { map } from 'rxjs/operators';
 import { environment } from '@gid/src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GitIssuesLookupService {
   baseUrl = environment.gitApiUrl + 'repos/';
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient
+    ) {}
+  addparam(existingParams, param, value) {
+    if (!existingParams) {
+      return '?' + param + '=' + value;
+    }
+    return existingParams + '&' + param + '=' + value;
+  }
 
-  getIssues$(userAndRepoPathPart: string, days = 7) {
-    return this.httpClient.get(this.baseUrl + userAndRepoPathPart + '/issues').pipe(
+  getIssues$(userAndRepoPathPart: string, days?: number) {
+    let params = '';
+    if ( days !== undefined ) {
+      params = this.addparam(params, 'since', this.daysAgoAsString(days) );
+    }
+    return this.httpClient.get(this.baseUrl + userAndRepoPathPart + '/issues' + params).pipe(
       map((jsonArray: any[] ) => {
 
         return jsonArray.map(rawIssue => {
@@ -32,6 +45,19 @@ export class GitIssuesLookupService {
 
     );
   }
+
+  daysAgoAsString(days: number) {
+   const dateAgo = new Date();
+   dateAgo.setHours(0, 0, 0, 0);
+   dateAgo.setDate(dateAgo.getDate() - days);
+
+   const dateParam = formatDate(dateAgo, 'y-MM-d', 'en-US');
+
+   console.log('dateParam', dateParam);
+   return dateParam;
+  }
+
+
   buildUser(rawUser): GitUser {
 
     const user = new GitUser();

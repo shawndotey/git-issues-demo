@@ -1,35 +1,34 @@
-@mixin issues-table-container() {
-  mat-header-cell {
-    display: flex;
-  }
-
-  mat-cell {
-    display: flex;
-    justify-content: flex-end;
-
-    .condensed-label {
-      display: none;
-      font-weight: normal;
-      font-size: .85em;
-      flex-basis: 148px;
-      width: 148px;
+@mixin issues-table-columns() {
+  .mat-column-{
+    &created{
+      flex: 0 0 100px;
+      order: 1;
+    }
+    &user{
+      flex: 0 0 100px;
+      order: 2;
+    }
+    &assignee{
+      flex: 0 0 100px;
+      order: 4;
+    }
+    &issue{
+      flex: 1 1 auto;
+      order: 3;
     }
   }
-
+}
+@mixin issues-table-cell-content() {
   .user-container {
     flex-direction: row;
     width: 100%;
-
-    .avatar-image {
-      // width: 200px;
-      // height: 180px;
-      img {
-        width: 200px;
-        height: 150px;
-      }
+  }
+  .avatar-image {
+    img {
+      width: 75px;
+      height: 75px;
     }
   }
-
   .cell-content {
     flex: 1 1 auto;
     white-space: nowrap;
@@ -52,6 +51,28 @@
     }
   }
 
+}
+
+
+@mixin issues-table-container() {
+  mat-header-cell {
+    display: flex;
+  }
+
+  mat-cell {
+    display: flex;
+    justify-content: flex-end;
+    padding:4px;
+    .condensed-label {
+      display: none;
+      font-weight: normal;
+      font-size: .85em;
+      flex-basis: 148px;
+      width: 148px;
+    }
+  }
+
+  
 }
 
 @mixin issues-table-header-row-condensed() {
