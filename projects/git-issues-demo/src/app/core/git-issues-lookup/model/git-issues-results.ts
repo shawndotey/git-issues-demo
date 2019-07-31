@@ -4,7 +4,9 @@ export class GitIssuesResults {
  // id;
  id: number;
  // url;
- url: string;
+ bodyUrl: string;
+ // html_url;
+ issueUrl: string;
  // created_at;
  createDateTime: string;
  // updated_at

@@ -1,4 +1,9 @@
 @import '../app/shared/scss/bootstrap/bootstrap.scss';
 .middle{
- text-align:center
+ text-align:center;
+ align-content: center;
+}
+.col-centered{
+ float: none;
+ margin: 0 auto;
 }

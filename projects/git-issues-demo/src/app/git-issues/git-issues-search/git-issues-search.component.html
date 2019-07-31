@@ -1,1 +1,25 @@
-<p>git-issues-search works!</p>
+<div >
+ <div class="gid-git-issues-search" >
+    <form [formGroup]="searchForm">
+   <mat-toolbar>
+     
+     <!-- Search bar -->
+     <div class="search-bar-container">
+
+     
+         <mat-icon>search</mat-icon>
+     
+
+       <!-- Input Text -->
+       <mat-form-field class="search-bar-field">
+        <input matInput type="text" placeholder="Search Repo issues" formControlName="searchText">
+        <button mat-button *ngIf="searchForm.controls['searchText'].value" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearchText()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+     
+     </div>
+
+   </mat-toolbar>
+ </form>
+</div>

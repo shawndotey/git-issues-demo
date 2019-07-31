@@ -3,6 +3,6 @@ export class GitUser {
  userName = '';
  // avatar_url;
  avatarUrl = '';
- // url;
- url =  '';
+  // url;
+    userUrl = '';
 }

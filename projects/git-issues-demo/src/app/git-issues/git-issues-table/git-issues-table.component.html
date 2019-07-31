@@ -2,30 +2,21 @@
 
   <mat-table [dataSource]="dataSource" matSort *ngIf="!(searching$ | async)">
 
-    <!-- ID Column -->
-    <ng-container matColumnDef="created">
-      <mat-header-cell *matHeaderCellDef > CREATED </mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <div class="condensed-label">CREATED :</div>
-        <div class="cell-content">
-          {{row.createDateTime | date:'MMMM d h:mm:ss'}}
-        </div>
-      </mat-cell>
-    </ng-container>
-
     <!-- GitIssues Column -->
     <ng-container matColumnDef="user">
-      <mat-header-cell *matHeaderCellDef > USER </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> USER </mat-header-cell>
       <mat-cell *matCellDef="let row">
         <div class="condensed-label">USER :</div>
         <div class="cell-content">
           <div class="user-container" *ngIf="row.user.userName">
-            <div class="avatar-image">
-              <img src="{{row.user.avatarUrl}}" />
-            </div>
-            <div>
-              {{row.user.userName}}
-            </div>
+            <a [href]="row.user.userUrl" target="_blank">
+              <div class="avatar-image">
+                <img src="{{row.user.avatarUrl}}" />
+              </div>
+              <div class="avatar-user-name">
+                {{row.user.userName}}
+              </div>
+            </a>
           </div>
         </div>
       </mat-cell>
@@ -38,8 +29,8 @@
       <mat-cell *matCellDef="let row"> 
         <div class="condensed-label">ISSUE :</div>
         <div class="cell-content issue">
-            <div class="title"> {{row.title}} </div>
-            <div class="body"> {{row.body}} </div>
+            <div class="title"> <a [href]="row.issueUrl" target="_blank">{{row.title}} </a></div>
+            <div class="body"> <a [href]="row.bodyUrl" target="_blank">{{row.body}} </a> </div>
         </div>
         
       </mat-cell>
@@ -52,18 +43,18 @@
         <div class="condensed-label">ASSIGNED :</div>
         <div class="cell-content">
           <div class="user-container" *ngIf="row.assigneeUser.userName">
-            <div class="avatar-image">
+            <a [href]="row.assigneeUser.userUrl" target="_blank">
               <div class="avatar-image">
                 <img src="{{row.assigneeUser.avatarUrl}}" />
               </div>
-              <div>
-                {{row.assigneeUser.userName}}
+              <div class="avatar-user-name">
+                {{row.user.userName}}
               </div>
-            </div>
+            </a>
           </div>
         </div>
-      </mat-cell>
-      </ng-container>
+        </mat-cell>
+        </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;">

@@ -6,6 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./git-issues-overview-widget.component.scss']
 })
 export class GitIssuesOverviewWidgetComponent implements OnInit {
+  @Input() textSearch: string;
   @Input() gitRepo: string;
   constructor() { }
 

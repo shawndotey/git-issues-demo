@@ -6,7 +6,7 @@
   @include issues-table-cell-content();
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
  .mat-table {
   
    @include issues-table-condensed();

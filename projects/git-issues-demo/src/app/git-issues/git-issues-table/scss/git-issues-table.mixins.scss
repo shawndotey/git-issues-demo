@@ -1,20 +1,19 @@
 @mixin issues-table-columns() {
   .mat-column-{
-    &created{
-      flex: 0 0 100px;
-      order: 1;
-    }
     &user{
-      flex: 0 0 100px;
+      flex: 0 0 150px;
       order: 2;
+      justify-content: center;
     }
     &assignee{
-      flex: 0 0 100px;
+      flex: 0 0 150px;
       order: 4;
+      justify-content: center;
     }
     &issue{
       flex: 1 1 auto;
       order: 3;
+      align-self: stretch;
     }
   }
 }
@@ -22,33 +21,62 @@
   .user-container {
     flex-direction: row;
     width: 100%;
+    align-items: center;
+    justify-content: center;
   }
   .avatar-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     img {
       width: 75px;
       height: 75px;
     }
   }
+  .avatar-user-name {
+    font-size: 1.1em;
+    padding:2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .cell-content {
     flex: 1 1 auto;
-    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
     width: 100%;
     text-align: left;
     display: flex;
     &.issue{
+      max-height: 152px;
       flex-direction: column;
+      align-self: stretch;
       .title{
+        text-overflow: ellipsis;
         font-size: 1.5em;
         font-weight: bold;
         height:30px;
+        min-height:30px;
+        max-height:30px;
+        min-width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .body{
         flex: 1 1 auto;
-        
+        white-space: pre-line;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
       }
     }
+  }
+  .condensed-label {
+    display: none;
+    font-size: 1.1em;
+    flex-basis: 148px;
+    width: 148px;        
+    font-weight: bold;
   }
 
 }
@@ -58,18 +86,14 @@
   mat-header-cell {
     display: flex;
   }
-
+  a{
+    color: initial;
+    
+  }
   mat-cell {
     display: flex;
     justify-content: flex-end;
     padding:4px;
-    .condensed-label {
-      display: none;
-      font-weight: normal;
-      font-size: .85em;
-      flex-basis: 148px;
-      width: 148px;
-    }
   }
 
   
@@ -105,8 +129,6 @@
   display: flex;
   font-size: 1em;
   text-align: right;
-  font-weight: bold;
-  // height: 30px;
   flex: 1 1 auto;
   width: 100%;
   flex-direction: row;
@@ -120,13 +142,15 @@
   }
 
   .condensed-label {
-    display: flex;
+    display: flex;  
   }
 
+  .user-container{
+    width: auto;
+  }
+  
   padding-right: 12px;
-  // &:before {
-  //   @include issues-table-cell-condensed-before();
-  // }
+  
 }
 
 @mixin issues-table-cell-condensed-before() {

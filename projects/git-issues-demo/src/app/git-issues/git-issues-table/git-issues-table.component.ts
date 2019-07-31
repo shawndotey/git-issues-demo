@@ -1,3 +1,4 @@
+import { GitIssuesTableFilterService } from './git-issues-table-filter.service';
 import { GitIssuesResults } from './../../core/git-issues-lookup/model/git-issues-results';
 import { GitIssuesLookupService } from '@gid/core/git-issues-lookup/git-issues-lookup.service';
 import { Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy, OnChanges } from '@angular/core';
@@ -10,22 +11,25 @@ import { takeUntil, filter, switchMap } from 'rxjs/operators';
   selector: 'gid-git-issues-table',
   templateUrl: './git-issues-table.component.html',
   styleUrls: ['./git-issues-table.component.scss'],
+  providers: [
+    GitIssuesTableFilterService
+  ]
 })
 export class GitIssuesOrdersTableComponent implements OnInit , AfterViewInit, OnDestroy, OnChanges {
 
   @Input() gitRepo: string;
-  @Input() searching$: Observable<boolean>;
+  @Input() textSearch: string;
   constructor(
-    private issuesLookup: GitIssuesLookupService
+    private issuesLookup: GitIssuesLookupService,
+    private filterIssuesService: GitIssuesTableFilterService
   ) {
     this.dataSource = new MatTableDataSource([]);
 
   }
-  private gitRepo$: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private _onDestroy = new Subject<void>();
   today: number = Date.now();
 
-  displayedColumns = ['created', 'user', 'issue', 'assignee'];
+  displayedColumns = ['user', 'issue', 'assignee'];
   // displayedColumns = ['id',  'title', 'body'];
   dataSource: MatTableDataSource<GitIssuesResults>;
 
@@ -38,18 +42,32 @@ export class GitIssuesOrdersTableComponent implements OnInit , AfterViewInit, On
     this.dataSource.sort = this.sort;
   }
   ngOnInit() {
-    this.initGitIssues();
+
   }
-  initGitIssues() {
+
+  ngOnChanges(changes) {
+    console.log('GitIssuesOrdersTableComponent changes', changes);
+    if (changes.gitRepo) {
+      this.pullGitIssues();
+    }
+    if (changes.textSearch) {
+      this.filterCurrentIssues();
+    }
+
+  }
+  pullGitIssues() {
     this.issuesLookup.getIssues$(this.gitRepo, 7).pipe(
        takeUntil(this._onDestroy)
     ).subscribe(issues => {
-      this.dataSource.data = issues;
+      this.updateCurrentIssues(issues);
+      this.filterCurrentIssues();
     });
-    this.gitRepo$.next(this.gitRepo);
   }
-  ngOnChanges(changes) {
-    this.gitRepo$.next(changes.gitRepo.currentValue );
+  updateCurrentIssues(issues) {
+    this.filterIssuesService.setAllCurrentIssues(issues);
+  }
+  filterCurrentIssues() {
+    this.dataSource.data = this.filterIssuesService.filterCurrentIssues(this.textSearch);
   }
   ngOnDestroy() {
     this._onDestroy.next();

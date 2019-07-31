@@ -32,7 +32,8 @@ export class GitIssuesLookupService {
         return jsonArray.map(rawIssue => {
           const result = new  GitIssuesResults();
           result.title = rawIssue.title;
-          result.url = rawIssue.url;
+          result.bodyUrl = rawIssue.url;
+          result.issueUrl = rawIssue.html_url;
           result.createDateTime = rawIssue.created_at;
           result.updatedDateTime = rawIssue.updated_at;
           result.body =  rawIssue.body;
@@ -64,7 +65,7 @@ export class GitIssuesLookupService {
     if (rawUser) {
       user.userName = rawUser.login || '';
       user.avatarUrl = rawUser.avatar_url || '';
-      user.url = rawUser.url || '';
+      user.userUrl = rawUser.html_url || '';
     }
     return user;
   }

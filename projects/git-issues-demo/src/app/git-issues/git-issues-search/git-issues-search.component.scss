@@ -1,0 +1,27 @@
+.gid-git-issues-search {
+  .search-bar-container {
+    width: 100%;
+    display: flex;
+  }
+
+  .search-bar-field {
+    flex: 1 1 auto;
+  }
+
+  .search-bar input {
+    border-bottom-color: white;
+  }
+
+  .md-errors-spacer {
+    display: none;
+  }
+
+  mat-toolbar {
+    height: 112px;
+  }
+
+  mat-icon {
+    align-self: center;
+    margin: 4px;
+  }
+}
