@@ -2,7 +2,6 @@
 
   <mat-table [dataSource]="dataSource" matSort *ngIf="!(searching$ | async)">
 
-    <!-- GitIssues Column -->
     <ng-container matColumnDef="user">
       <mat-header-cell *matHeaderCellDef> USER </mat-header-cell>
       <mat-cell *matCellDef="let row">
@@ -22,23 +21,19 @@
       </mat-cell>
     </ng-container>
 
-    <!-- Progress Column -->
-
     <ng-container matColumnDef="issue">
-      <mat-header-cell *matHeaderCellDef > ISSUE </mat-header-cell>
-      <mat-cell *matCellDef="let row"> 
+      <mat-header-cell *matHeaderCellDef> ISSUE </mat-header-cell>
+      <mat-cell *matCellDef="let row">
         <div class="condensed-label">ISSUE :</div>
         <div class="cell-content issue">
-            <div class="title"> <a [href]="row.issueUrl" target="_blank">{{row.title}} </a></div>
-            <div class="body"> <a [href]="row.bodyUrl" target="_blank">{{row.body}} </a> </div>
+          <div class="title"> <a [href]="row.issueUrl" target="_blank">{{row.title}} </a></div>
+          <div class="body"> <a [href]="row.bodyUrl" target="_blank">{{row.body}} </a> </div>
         </div>
-        
       </mat-cell>
     </ng-container>
-    
+
     <ng-container matColumnDef="assignee">
-      <mat-header-cell *matHeaderCellDef > ASSIGNED </mat-header-cell>
-      
+      <mat-header-cell *matHeaderCellDef> ASSIGNED </mat-header-cell>
       <mat-cell *matCellDef="let row">
         <div class="condensed-label">ASSIGNED :</div>
         <div class="cell-content">
@@ -53,8 +48,8 @@
             </a>
           </div>
         </div>
-        </mat-cell>
-        </ng-container>
+      </mat-cell>
+    </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;">

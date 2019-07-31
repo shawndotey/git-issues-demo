@@ -3,8 +3,8 @@ import { GitIssuesResults } from './../../core/git-issues-lookup/model/git-issue
 import { GitIssuesLookupService } from '@gid/core/git-issues-lookup/git-issues-lookup.service';
 import { Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy, OnChanges } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
-import { takeUntil, filter, switchMap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { takeUntil} from 'rxjs/operators';
 
 
 @Component({
@@ -30,7 +30,6 @@ export class GitIssuesTableComponent implements OnInit , AfterViewInit, OnDestro
   today: number = Date.now();
 
   displayedColumns = ['user', 'issue', 'assignee'];
-  // displayedColumns = ['id',  'title', 'body'];
   dataSource: MatTableDataSource<GitIssuesResults>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

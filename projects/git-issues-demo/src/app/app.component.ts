@@ -12,7 +12,4 @@ export class AppComponent  implements OnInit {
 
   ngOnInit() {
   }
-  searchTextChange(searchText) {
-    console.log('searchTextChange app', searchText);
-  }
 }

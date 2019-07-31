@@ -14,12 +14,6 @@ export class GitIssuesLookupService {
   constructor(
     private httpClient: HttpClient
     ) {}
-  addparam(existingParams, param, value) {
-    if (!existingParams) {
-      return '?' + param + '=' + value;
-    }
-    return existingParams + '&' + param + '=' + value;
-  }
 
   getIssues$(userAndRepoPathPart: string, days?: number) {
     let params = '';
@@ -28,39 +22,36 @@ export class GitIssuesLookupService {
     }
     return this.httpClient.get(this.baseUrl + userAndRepoPathPart + '/issues' + params).pipe(
       map((jsonArray: any[] ) => {
-
         return jsonArray.map(rawIssue => {
-          const result = new  GitIssuesResults();
-          result.title = rawIssue.title;
-          result.bodyUrl = rawIssue.url;
-          result.issueUrl = rawIssue.html_url;
-          result.createDateTime = rawIssue.created_at;
-          result.updatedDateTime = rawIssue.updated_at;
-          result.body =  rawIssue.body;
+          const result = this.buildIssueFromRaw(rawIssue);
           result.assigneeUser = this.buildUser(rawIssue.assignee);
           result.user = this.buildUser(rawIssue.user);
           return result;
         });
-
       })
-
     );
   }
+  private daysAgoAsString(days: number) {
+    const dateAgo = new Date();
+    dateAgo.setHours(0, 0, 0, 0);
+    dateAgo.setDate(dateAgo.getDate() - days);
+    const dateParam = formatDate(dateAgo, 'y-MM-d', 'en-US');
+    return dateParam;
+  }
 
-  daysAgoAsString(days: number) {
-   const dateAgo = new Date();
-   dateAgo.setHours(0, 0, 0, 0);
-   dateAgo.setDate(dateAgo.getDate() - days);
-
-   const dateParam = formatDate(dateAgo, 'y-MM-d', 'en-US');
-
-   console.log('dateParam', dateParam);
-   return dateParam;
+  private buildIssueFromRaw(rawIssue): GitIssuesResults {
+    const result = new  GitIssuesResults();
+    result.title = rawIssue.title;
+    result.bodyUrl = rawIssue.html_url;
+    result.issueUrl = rawIssue.html_url;
+    result.createDateTime = rawIssue.created_at;
+    result.updatedDateTime = rawIssue.updated_at;
+    result.body =  rawIssue.body;
+    return result;
   }
 
 
-  buildUser(rawUser): GitUser {
-
+  private buildUser(rawUser): GitUser {
     const user = new GitUser();
     if (rawUser) {
       user.userName = rawUser.login || '';
@@ -68,5 +59,12 @@ export class GitIssuesLookupService {
       user.userUrl = rawUser.html_url || '';
     }
     return user;
+  }
+
+  private addparam(existingParams, param, value) {
+    if (!existingParams) {
+      return '?' + param + '=' + value;
+    }
+    return existingParams + '&' + param + '=' + value;
   }
 }

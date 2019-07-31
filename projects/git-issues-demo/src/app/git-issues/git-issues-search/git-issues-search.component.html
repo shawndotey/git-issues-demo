@@ -1,15 +1,10 @@
 <div >
  <div class="gid-git-issues-search" >
-    <form [formGroup]="searchForm">
-   <mat-toolbar>
-     
+  <form [formGroup]="searchForm">
+   <mat-toolbar>     
      <!-- Search bar -->
-     <div class="search-bar-container">
-
-     
-         <mat-icon>search</mat-icon>
-     
-
+     <div class="search-bar-container">     
+      <mat-icon>search</mat-icon>
        <!-- Input Text -->
        <mat-form-field class="search-bar-field">
         <input matInput type="text" placeholder="Search Repo issues" formControlName="searchText">
@@ -17,9 +12,7 @@
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
-     
      </div>
-
    </mat-toolbar>
- </form>
+  </form>
 </div>

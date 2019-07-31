@@ -1,6 +1,4 @@
 import { GitIssuesModule } from './git-issues/git-issues.module';
-import { GitIssuesOverviewWidgetModule } from './git-issues/git-issues-overview-widget/git-issues-overview-widget.module';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';

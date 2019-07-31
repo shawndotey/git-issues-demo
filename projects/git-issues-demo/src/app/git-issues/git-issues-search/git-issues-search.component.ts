@@ -12,10 +12,8 @@ export class GitIssuesSearchComponent implements OnInit, OnDestroy  {
   @Output() searchText$: Observable<string>;
   constructor() {
     this.searchText$ = this._searchText$.asObservable();
-    // .pipe(
-    //   debounceTime(300)
-    // );
-   }
+  }
+
   public searchForm = new FormGroup({
     searchText: new FormControl('')
   });
@@ -27,13 +25,11 @@ export class GitIssuesSearchComponent implements OnInit, OnDestroy  {
       console.log('GitIssuesSearchComponent searchForm.valueChanges', changes);
       this._searchText$.next(changes.searchText);
     });
-
-
   }
+
   clearSearchText() {
     this.searchForm.controls.searchText.setValue('');
   }
-
 
   ngOnDestroy() {
     this._onDestroy.next();
