@@ -15,7 +15,7 @@ import { takeUntil, filter, switchMap } from 'rxjs/operators';
     GitIssuesTableFilterService
   ]
 })
-export class GitIssuesOrdersTableComponent implements OnInit , AfterViewInit, OnDestroy, OnChanges {
+export class GitIssuesTableComponent implements OnInit , AfterViewInit, OnDestroy, OnChanges {
 
   @Input() gitRepo: string;
   @Input() textSearch: string;
@@ -46,7 +46,7 @@ export class GitIssuesOrdersTableComponent implements OnInit , AfterViewInit, On
   }
 
   ngOnChanges(changes) {
-    console.log('GitIssuesOrdersTableComponent changes', changes);
+    console.log('GitIssuesTableComponent changes', changes);
     if (changes.gitRepo) {
       this.pullGitIssues();
     }

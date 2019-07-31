@@ -1,12 +1,12 @@
 /// derived from https://stackblitz.com/edit/angular-material-table-responsive
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GitIssuesOrdersTableComponent } from './git-issues-table.component';
+import { GitIssuesTableComponent } from './git-issues-table.component';
 import { MatMenuModule, MatIconModule, MatTableModule, MatPaginatorModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [GitIssuesOrdersTableComponent],
+  declarations: [GitIssuesTableComponent],
   imports: [
     CommonModule,
     MatMenuModule,
@@ -18,8 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule
   ],
   exports: [
-    GitIssuesOrdersTableComponent
+    GitIssuesTableComponent
   ]
 
 })
-export class GitIssuesOrdersTableModule { }
+export class GitIssuesTableModule { }

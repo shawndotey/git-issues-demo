@@ -1,4 +1,4 @@
-import { GitIssuesOrdersTableModule } from './../git-issues-table/git-issues-table.module';
+import { GitIssuesTableModule } from './../git-issues-table/git-issues-table.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GitIssuesOverviewWidgetComponent } from './git-issues-overview-widget.component';
@@ -7,7 +7,7 @@ import { GitIssuesOverviewWidgetComponent } from './git-issues-overview-widget.c
   declarations: [GitIssuesOverviewWidgetComponent],
   imports: [
     CommonModule,
-    GitIssuesOrdersTableModule
+    GitIssuesTableModule
   ],
   exports: [
     GitIssuesOverviewWidgetComponent
